@@ -5,6 +5,11 @@ db.countrys.insert({name:'Tunisia',city:[{name:'Ariana'},{name:'Beja'},{name:'Be
 {name:'Mahdia'},{name:'Manouba'},{name:'Medenine'},{name:'Monastir'},{name:'Nabeul'},{name:'Sfax'},{name:'Sidi Bouzid'},
 {name:'Siliana'},{name:'Sousse'},{name:'Tataouine'},{name:'Tozeur'},{name:'Tunis'},{name:'Zaghouan'}]})
 
-db.countrys.find()
-
 db.countrys.insert({name:'United Kingdom',city:[{name:'London'},{name:'Southampton'}]})
+
+db.countrys.insert({name:'France',city:[{name:'Paris'},{name:'Lille'}]})
+db.countrys.insert({name:'France',city:[{name:'paris'},{name:'lille'}]})
+db.countrys.find()
+db.countrys.find({},{name:1,_id:0})
+db.countrys.find( { } ).sort( { "city.name": 1 } )
+db.countrys.aggregate({ $unwind: '$city' },{ $match: {'name': 'France'}},{ $sort: {'city.name': 1}})
