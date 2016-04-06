@@ -47,4 +47,11 @@ module.exports = function(app){
       res.json(found);
     });
 	});
+
+  app.post('/profile',function(req,res){
+		var token = req.body.token;
+    user.profile(token,function(found){
+      res.json(found);
+    });
+	});
 }

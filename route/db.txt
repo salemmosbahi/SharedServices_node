@@ -13,3 +13,8 @@ db.countrys.find()
 db.countrys.find({},{name:1,_id:0})
 db.countrys.find( { } ).sort( { "city.name": 1 } )
 db.countrys.aggregate({ $unwind: '$city' },{ $match: {'name': 'France'}},{ $sort: {'city.name': 1}})
+
+db.users.update({fname:'Salem'},{$set:{ptd:0, pttd:1,
+ptc:0, pttc:1,
+pte:0, ptte:1,
+ptp:0, pttp:1}})
