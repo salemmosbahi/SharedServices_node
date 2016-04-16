@@ -1,18 +1,19 @@
 use sharedservices
 
-db.countrys.insert({name:'Tunisia',city:[{name:'Ariana'},{name:'Beja'},{name:'Ben Arous'},{name:'Bizerte'},
-{name:'Gabes'},{name:'Gafsa'},{name:'Jendouba'},{name:'Kairouan'},{name:'Kasserine'},{name:'Kebili'},{name:'Kef'},
-{name:'Mahdia'},{name:'Manouba'},{name:'Medenine'},{name:'Monastir'},{name:'Nabeul'},{name:'Sfax'},{name:'Sidi Bouzid'},
-{name:'Siliana'},{name:'Sousse'},{name:'Tataouine'},{name:'Tozeur'},{name:'Tunis'},{name:'Zaghouan'}]})
+db.countrys.insert({name:'Tunisia',city:[{name:'Sousse'},{name:'Tunis'},{name:'Ariana'},{name:'Monastir'},
+{name:'Mahdia'},{name:'Beja'},{name:'Ben Arous'},{name:'Bizerte'},{name:'Gabes'},{name:'Gafsa'},{name:'Jendouba'},
+{name:'Kairouan'},{name:'Kasserine'},{name:'Kebili'},{name:'Kef'},{name:'Manouba'},{name:'Medenine'},{name:'Nabeul'},
+{name:'Sfax'},{name:'Sidi Bouzid'},{name:'Siliana'},{name:'Tataouine'},{name:'Tozeur'},{name:'Zaghouan'}]})
 
 db.countrys.insert({name:'United Kingdom',city:[{name:'London'},{name:'Southampton'}]})
 
 db.countrys.insert({name:'France',city:[{name:'Paris'},{name:'Lille'}]})
-db.countrys.insert({name:'France',city:[{name:'paris'},{name:'lille'}]})
 db.countrys.find()
 db.countrys.find({},{name:1,_id:0})
 db.countrys.find( { } ).sort( { "city.name": 1 } )
 db.countrys.aggregate({ $unwind: '$city' },{ $match: {'name': 'France'}},{ $sort: {'city.name': 1}})
+
+db.users.update({fname:'Salem'},{$set:{connected:false}})
 
 db.users.update({fname:'Salem'},{$set:{ptd:0, pttd:1,
 ptc:0, pttc:1,

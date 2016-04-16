@@ -1,6 +1,7 @@
 var encryption	= require('./encryption');
 var country = require('controllers/country');
 var user	= require('controllers/user');
+var download	= require('controllers/download');
 
 module.exports = function(app){
 
@@ -39,7 +40,7 @@ module.exports = function(app){
     });
 	});
 
-	app.post('/login',function(req,res){
+  app.post('/login',function(req,res){
 		var key = encryption.key(req.body.key);
 		var email = encryption.decode(req.body.email,key);
 		var password = encryption.decode(req.body.password,key);
@@ -48,10 +49,39 @@ module.exports = function(app){
     });
 	});
 
+  app.post('/logout',function(req,res){
+  		var token = req.body.token;
+      user.logout(token,function(found){
+        res.json(found);
+      });
+  	});
+
   app.post('/profile',function(req,res){
 		var token = req.body.token;
     user.profile(token,function(found){
       res.json(found);
     });
 	});
+
+  /********* Download Start *********/
+  app.post('/getDownloadEnd',function(req,res){
+    var country = req.body.country;
+    var city = req.body.city;
+		download.getDownloadEnd(country,city,function(found){
+			res.json(found);
+		});
+	});
+
+  app.post('/addDownload',function(req,res){
+    var name = req.body.name;
+    var size = req.body.size;
+		var token = req.body.token;
+    var username = req.body.username;
+    var city = req.body.city;
+    var country = req.body.country;
+		download.addDownload(name,size,token,username,city,country,function(found){
+			res.json(found);
+		});
+	});
+  /********* Download End *********/
 }
