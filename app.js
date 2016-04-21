@@ -9,4 +9,7 @@ app.use(bodyParser.json());
 require('./route/routes.js')(app);
 
 app.listen(port);
+console.log(Date.now(2016,4,17) + 86400000);
+console.log(Date.now(2016,4,18) + 86400000);
+console.log(Date.now(2016,4,19) + 86400000);
 console.log('The App Shared Services runs at port: ' + port);

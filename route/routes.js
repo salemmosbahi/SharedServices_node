@@ -72,6 +72,18 @@ module.exports = function(app){
 		});
 	});
 
+  app.post('/getDownload',function(req,res){
+    var name = req.body.name;
+    var date = req.body.date;
+    var country = req.body.country;
+    var city = req.body.city;
+    var status = req.body.status;
+    console.log(name + ' ' + date + ' ' + country + ' ' + city + ' ' + status);
+		download.getDownload(name,date,country,city,status,function(found){
+			res.json(found);
+		});
+	});
+
   app.post('/addDownload',function(req,res){
     var name = req.body.name;
     var size = req.body.size;
