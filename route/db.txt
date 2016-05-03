@@ -5,9 +5,49 @@ db.countrys.insert({name:'Tunisia',city:[{name:'Sousse'},{name:'Tunis'},{name:'A
 {name:'Kairouan'},{name:'Kasserine'},{name:'Kebili'},{name:'Kef'},{name:'Manouba'},{name:'Medenine'},{name:'Nabeul'},
 {name:'Sfax'},{name:'Sidi Bouzid'},{name:'Siliana'},{name:'Tataouine'},{name:'Tozeur'},{name:'Zaghouan'}]})
 
-db.countrys.insert({name:'United Kingdom',city:[{name:'London'},{name:'Southampton'}]})
+db.countrys.insert({name:'United Kingdom',city:[{name:'Aberdeen'},{name:'Armagh'},{name:'Bangor'},{name:'Bath'},
+{name:'Belfast'},{name:'Birmingham'},{name:'Bradford'},{name:'Brighton and Hove'},{name:'Bristol'},{name:'Cambridge'},
+{name:'Canterbury'},{name:'Cardiff'},{name:'Carlisle'},{name:'Chester'},{name:'Chichester'},{name:'City of London'},
+{name:'Coventry'},{name:'Derby'},{name:'Dundee'},{name:'Durham'},{name:'Edinburgh'},{name:'Ely'},
+{name:'Exeter'},{name:'Glasgow'},{name:'Gloucester'},{name:'Hereford'},{name:'Inverness'},{name:'Kingston upon Hull'},
+{name:'Lancaster'},{name:'Leeds'},{name:'Leicester'},{name:'Lichfield'},{name:'Lincoln'},{name:'Lisburn'},
+{name:'Liverpool'},{name:'Londonderry'},{name:'Manchester'},{name:'Newcastle upon Tyne'},{name:'Newport'},{name:'Newry'},
+{name:'Norwich'},{name:'Nottingham'},{name:'Oxford'},{name:'Peterborough'},{name:'Plymouth'},{name:'Portsmouth'},
+{name:'Preston'},{name:'Ripon'},{name:'Salford'},{name:'Salisbury'},{name:'Sheffield'},{name:'Southampton'},
+{name:'St Albans'},{name:'St Davids'},{name:'Stirling'},{name:'Stoke-on-Trent'},{name:'Sunderland'},{name:'Swansea'},
+{name:'Truro'},{name:'Wakefield'},{name:'Wells'},{name:'Westminster'},{name:'Winchester'},{name:'Wolverhampton'},
+{name:'Worcester'},{name:'York'}]})
 
-db.countrys.insert({name:'France',city:[{name:'Paris'},{name:'Lille'}]})
+db.countrys.insert({name:'Morocco',city:[{name:'Casablanca'},{name:'Fes'},{name:'Tangier'},{name:'Marrakech'},
+{name:'Sale'},{name:'Meknes'},{name:'Rabat'},{name:'Kenitra'},
+{name:'Tetouan'},{name:'Beni Mellal'},{name:'Safi'},{name:'Oujda'},
+{name:'Inezgane Ait Melloul'},{name:'Agadir-Ida Ou Tanan'},{name:'Nador'},{name:'Khouribga'},
+{name:'Settat'},{name:'Skhirate-Temara'},{name:'El Jadida'},{name:'Khenifra'},
+{name:'Taza'},{name:'Mohammedia'},{name:'Larache'},{name:'Khemisset'},
+{name:'Sidi Kacem'},{name:'Errachidia'},{name:'Taroudannt'},{name:'El Kelaa Des Sraghna'},
+{name:'Berkane'},{name:'Ouarzazate'},{name:'Taourirt'},{name:'Al Hoceima'},
+{name:'Essaouira'},{name:'El Hajeb'},{name:'Tiznit'},{name:'Azilal'},
+{name:'Ifrane'},{name:'Mediouna'},{name:'Benslimane'},{name:'Taounate'},
+{name:'Jerada'},{name:'Sefrou'},{name:'Figuig'},{name:'Tan-Tan'},
+{name:'Nouaceur'},{name:'Ouezzane'},{name:'Chefchaouen'},{name:'Boulemane'},
+{name:'Al Haouz'},{name:'Chichaoua'},{name:'Zagora'},{name:'Chtouka Ait Baha'},
+{name:'Mechra Bel Ksiri'},{name:'Moulay Yacoub'}]})
+
+db.countrys.insert({name:'France',city:[{name:'Paris'},{name:'Marseille'},{name:'Lyon'},{name:'Toulouse'},
+{name:'Nice'},{name:'Nantes'},{name:'Strasbourg'},{name:'Montpellier'},
+{name:'Bordeaux'},{name:'Lille'},{name:'Rennes'},{name:'Le Havre'},
+{name:'Reims'},{name:'Saint-Etienne'},{name:'Toulon'},{name:'Grenoble'},
+{name:'Angers'},{name:'Dijon'},{name:'Brest'},{name:'Le Mans'},
+{name:'Clermont-Ferrand'},{name:'Amiens'},{name:'Aix-en-Provence'},{name:'Limoges'},
+{name:'Nimes'},{name:'Tours'},{name:'Saint-Denis'},{name:'Villeurbanne'},
+{name:'Metz'},{name:'Besançon'},{name:'Caen'},{name:'Orleans'},
+{name:'Mulhouse'},{name:'Rouen'},{name:'Boulogne-Billancourt'},{name:'Perpignan'},
+{name:'Nancy'},{name:'Roubaix'},{name:'Fort-de-France'},{name:'Argenteuil'},
+{name:'Tourcoing'},{name:'Montreuil'},{name:'Saint-Paul'},{name:'Avignon'},
+{name:'Saint-Denis'},{name:'Versailles'},{name:'Nanterre'},{name:'Poitiers'},
+{name:'Creteil'},{name:'Aulnay-sous-Bois'},{name:'Vitry-sur-Seine'},{name:'Pau'},
+{name:'Calais'},{name:'Colombes'},{name:'La Rochelle'},{name:'Asnieres-sur-Seine'}]})
+
 db.countrys.find()
 db.countrys.find({},{name:1,_id:0})
 db.countrys.find( { } ).sort( { "city.name": 1 } )
@@ -19,3 +59,15 @@ db.users.update({fname:'Salem'},{$set:{ptd:0, pttd:1,
 ptc:0, pttc:1,
 pte:0, ptte:1,
 ptp:0, pttp:1}})
+
+http://services.interieur.gov.tn/wap/ar/docs/demarches/05.html
+{name:''},{name:''},{name:''},{name:''},{name:''},{name:''},{name:''},{name:''},{name:''},{name:''},{name:''},{name:''}
+db.papers.insert({name:'بطاقة التعريف الوطنية لأول مرة',place:'مركز الشرطة',country:'Tunisia',index:[{name:' مطبوعة إدارية للتعمير'},{name:'مضمون ولادة'},{name:'شهادة في الجنسية التونسية'},{name:'شهادة إقامة'},{name:'شهادة عمل أو شهادة حضور مدرسي'},{name:'ثلاثة صور'},{name:'طابع جبائي 3 دنانير'},{name:'نسخة مصورة من بطاقة إقامة'},{name:'ترخيص من الولي بالنسبة للقصر'},{name:'شهادة في الفصيلة الدموية'}]})
+db.papers.insert({name:'بطاقة التعريف الوطنية لتجديد',place:'مركز الشرطة',country:'Tunisia',index:[{name:' مطبوعة إدارية للتعمير'},{name:'مضمون ولادة'},{name:'بطاقة التعريف الوطنية'},{name:'وثيقة تثبت تغيير عنصر من عناصر'},{name:'طابع جبائي 3 دنانير'}]})
+db.papers.insert({name:'بطاقة التعريف الوطنية لضياع',place:'مركز الشرطة',country:'Tunisia',index:[{name:' مطبوعة إدارية للتعمير'},{name:' شهادة ضياع'},{name:'ثلاثة صور'},{name:'طابع جبائي 25 دنانير'}]})
+
+db.papers.insert({name:'جواز سفر',place:'مركز الشرطة',country:'Tunisia',index:[{name:' مطبوعة إدارية للتعمير'},{name:'نسخة من بطاقة التعريف الوطنية'},{name:'اربع صور'},{name:'ما يفيد الدراسة بالنسبة للتلاميذ'},{name:'ترخيص الولي بالنسبة للقصر'},{name:'طابع جبائي 25 دنانير بالنسبة للتلاميذ'},{name:'طابع جبائي 80 دنانير بالنسبة للبقية'}]})
+
+db.papers.insert({name:'بطاقة عدد 3',place:'مركز الشرطة',country:'Tunisia',index:[{name:' مطبوعة إدارية للتعمير'},{name:'نسخة من بطاقة التعريف الوطنية'},{name:'تقديم مضمون ولادة بالنسبة للقصر'},{name:'معلوم البطاقة 3 دنانير'}]})
+
+db.papers.insert({name:'شهادة إقامة',place:'مركز الشرطة',country:'Tunisia',index:[{name:'بطاقة التعريف الوطنية'},{name:'عقد الكراء أو شهادة الملكية'},{name:'فاتورة استخلاص الماء أو الكهرباء'},{name:'مضمون ولادة الراغب وبطاقة تعريف الولي بالنسبة للقصر'},{name:'طابع جبائي 1 دينار'}]})

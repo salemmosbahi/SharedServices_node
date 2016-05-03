@@ -3,6 +3,8 @@ var country = require('controllers/country');
 var user	= require('controllers/user');
 var car	= require('controllers/car');
 var download	= require('controllers/download');
+var event	= require('controllers/event');
+var paper	= require('controllers/paper');
 var demand	= require('controllers/demand');
 
 module.exports = function(app){
@@ -24,6 +26,7 @@ module.exports = function(app){
 		});
 	});
 
+  /********* User Start *********/
 	app.post('/signup',function(req,res){
 		var key = encryption.key(req.body.key);
     var picture = req.body.picture;
@@ -71,6 +74,49 @@ module.exports = function(app){
       });
     }
 	});
+  /********* User End *********/
+
+  /********* Car Download Event Paper Start *********/
+  app.post('/controlVote',function(req,res){
+    var service = req.body.service;
+    var idService = req.body.idService;
+    var token = req.body.token;
+    var usernameMain = req.body.usernameMain;
+    if (service === 'Car') {
+      car.controlVote(idService,token,usernameMain,function(found){
+  			res.json(found);
+  		});
+    } else if (service === 'Download') {
+      download.controlVote(idService,token,usernameMain,function(found){
+  			res.json(found);
+  		});
+    } else if (service === 'Event') {
+      event.controlVote(idService,token,usernameMain,function(found){
+  			res.json(found);
+  		});
+    }
+	});
+
+  app.post('/vote',function(req,res){
+		var service = req.body.service;
+    var idService = req.body.idService;
+    var token = req.body.token;
+    var pt = req.body.pt;
+    if (service === 'Car') {
+      car.vote(idService,token,pt,function(found){
+  			res.json(found);
+  		});
+    } else if (service === 'Download') {
+      download.vote(idService,token,pt,function(found){
+  			res.json(found);
+  		});
+    } else if (service === 'Event') {
+      event.vote(idService,token,pt,function(found){
+  			res.json(found);
+  		});
+    }
+	});
+  /********* Car Download Event Paper End *********/
 
   /********* Car Start *********/
   app.post('/getCarEnd',function(req,res){
@@ -97,9 +143,10 @@ module.exports = function(app){
   app.post('/addCar',function(req,res){
     var model = req.body.model;
     var description = req.body.description;
-    var country = req.body.country;
     var depart = req.body.depart;
     var destination = req.body.destination;
+    var latitude = req.body.latitude;
+    var longitude = req.body.longitude;
     var date = req.body.date;
     var time = req.body.time;
     var goingComing = req.body.goingComing;
@@ -107,7 +154,8 @@ module.exports = function(app){
     var place = req.body.place;
 		var token = req.body.token;
     var username = req.body.username;
-		car.addCar(model,description,country,depart,destination,date,time,goingComing,highway,place,token,username,function(found){
+    var country = req.body.country;
+    car.addCar(model,description,depart,destination,latitude,longitude,date,time,goingComing,highway,place,token,username,country,function(found){
 			res.json(found);
 		});
 	});
@@ -178,6 +226,73 @@ module.exports = function(app){
 		});
 	});
   /********* Download End *********/
+
+  /********* Event Start *********/
+  app.post('/getEventEnd',function(req,res){
+    var country = req.body.country;
+    var city = req.body.city;
+		event.getEventEnd(country,city,function(found){
+			res.json(found);
+		});
+	});
+
+  app.post('/getEvent',function(req,res){
+    var country = req.body.country;
+    var city = req.body.city;
+    var date = req.body.date;
+    var status = req.body.status;
+		event.getEvent(country,city,date,status,function(found){
+			res.json(found);
+		});
+	});
+
+  app.post('/addEvent',function(req,res){
+    var name = req.body.name;
+    var description = req.body.description;
+    var latitude = req.body.latitude;
+    var longitude = req.body.longitude;
+    var date = req.body.date;
+    var time = req.body.time;
+		var token = req.body.token;
+    var username = req.body.username;
+    var city = req.body.city;
+    var country = req.body.country;
+    event.addEvent(name,description,latitude,longitude,date,time,token,username,city,country,function(found){
+			res.json(found);
+		});
+	});
+
+  app.post('/getEventProfile',function(req,res){
+		var id = req.body._id;
+		event.getEventProfile(id,function(found){
+			res.json(found);
+		});
+	});
+
+  app.post('/completeEvent',function(req,res){
+		var idService = req.body._id;
+		var token = req.body.token;
+		event.completeEvent(idService,token,function(found){
+			res.json(found);
+		});
+	});
+  /********* Event End *********/
+
+  /********* Paper Start *********/
+  app.post('/getPaper',function(req,res){
+    var country = req.body.country;
+		paper.getPaper(country,function(found){
+			res.json(found);
+		});
+	});
+
+  app.post('/getPaperProfile',function(req,res){
+		var id = req.body._id;
+		paper.getPaperProfile(id,function(found){
+			res.json(found);
+		});
+	});
+  /********* Paper End *********/
 
   /********* Demand Start *********/
   app.post('/boxList',function(req,res){
